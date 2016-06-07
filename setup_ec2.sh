@@ -58,7 +58,7 @@ function SetupDataVolume {
 	mkdir -p /home/ubuntu/data
 	echo '/dev/xvdf       /home/ubuntu/data   ext4    defaults,nofail        0       2' | sudo tee --append /etc/fstab
 	sudo mount -a && sleep 1
-	sudo chown ubuntu data
+	sudo chown ubuntu ~/data
 }
 
 function GitClone {

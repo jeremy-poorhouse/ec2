@@ -57,7 +57,7 @@ function SetupDataVolume {
 	sudo cp /etc/fstab /etc/fstab.orig
 	mkdir -p /home/ubuntu/data
 	echo '/dev/xvdf       /home/ubuntu/data   ext4    defaults,nofail        0       2' | sudo tee --append /etc/fstab
-	sudo mount -a
+	sudo mount -a && sleep 1
 	sudo chown ubuntu data
 }
 

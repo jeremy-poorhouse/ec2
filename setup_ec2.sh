@@ -11,7 +11,7 @@ function InstallCuda {
 	echo 'install cuda'
 	wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb
 	sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
-	sudo apt-get update && ssudo apt-get install -y cuda
+	sudo apt-get update && sudo apt-get install -y cuda
 	sudo apt-get clean
 	rm cuda-repo-ubuntu1404_7.5-18_amd64.deb
 	nvidia-smi

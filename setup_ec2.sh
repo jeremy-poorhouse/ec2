@@ -51,7 +51,6 @@ function InstallAnaconda {
 
 function SetupDataVolume {
 	echo 'setup data volume'
-	mkdir -p /home/ubuntu/data
 	sudo mkdir -p /mnt/work
 	sudo chown ubuntu /mnt/work
 }
@@ -59,7 +58,7 @@ function SetupDataVolume {
 function GitClone {
 	echo 'git clones'
 	git config --global credential.helper 'cache --timeout=2600000'
-	cd ~/data
+	cd ~
 	git clone https://github.com/HighWestLabsInc/distracted.git
 	git clone --recurse-submodules https://github.com/jhale-hwl/models.git
 }

@@ -48,9 +48,10 @@ function InstallAnaconda {
 }
 
 function SetupDataVolume {
-	echo 'setup data volume'
-	sudo mkdir -p /mnt/work
-	sudo chown ubuntu /mnt/work
+	echo 'setup working volume'
+	sudo mkdir -p /mnt/working
+	sudo chown ubuntu /mnt/working
+	ln -s /mnt/working ~/working
 }
 
 function GitClone {

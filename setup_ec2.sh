@@ -64,7 +64,8 @@ function GitClone {
 function CreateCondaEnv {	
 	echo 'create conda env'
 	~/anaconda2/bin/conda create -n tensorflow python=2.7	
-	echo 'Please enter "source activate tensorflow"'
+	echo 'please run ". ~/.bashrc"'
+	echo 'Please run "source activate tensorflow"'
 }
 
 function InstallTensorflow {
@@ -118,7 +119,6 @@ case "$1" in
 		InstallTensorflow
 		AddEc2EnvVar
 		echo 'please run ". ~/.bash_profile"'
-		echo 'please run ". ~/.bashrc"'
 		;;
 	*)
 		echo 'Use ami-d05e75b8'

@@ -68,7 +68,7 @@ function GitClone {
 function CreateCondaEnv {	
 	echo 'create conda env'
 	conda create -n tensorflow python=2.7	
-	source activate tensorflow
+	echo 'Please enter "source activate tensorflow"'
 }
 
 function InstallTensorflow {

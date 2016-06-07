@@ -45,20 +45,15 @@ function InstallAnaconda {
 	echo 'install anaconda'
 	wget http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh
 	bash Anaconda2-4.0.0-Linux-x86_64.sh
-	. ~/.bashrc
 	rm Anaconda2-4.0.0-Linux-x86_64.sh
+	. ~/.bashrc
 }
 
 function SetupDataVolume {
-	echo 'add data volume'
-	lsblk
-	sudo file -s /dev/xvdf
-	sudo mkfs -t ext4 /dev/xvdf
-	sudo cp /etc/fstab /etc/fstab.orig
+	echo 'setup data volume'
 	mkdir -p /home/ubuntu/data
-	echo '/dev/xvdf       /home/ubuntu/data   ext4    defaults,nofail        0       2' | sudo tee --append /etc/fstab
-	sudo mount -a && sleep 1
-	sudo chown ubuntu ~/data
+	sudo mkdir -p /mnt/data
+	sudo chown ubuntu /mnt/data
 }
 
 function GitClone {

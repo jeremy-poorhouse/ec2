@@ -52,8 +52,8 @@ function InstallAnaconda {
 function SetupDataVolume {
 	echo 'setup data volume'
 	mkdir -p /home/ubuntu/data
-	sudo mkdir -p /mnt/data
-	sudo chown ubuntu /mnt/data
+	sudo mkdir -p /mnt/work
+	sudo chown ubuntu /mnt/work
 }
 
 function GitClone {
@@ -62,7 +62,6 @@ function GitClone {
 	cd ~/data
 	git clone https://github.com/HighWestLabsInc/distracted.git
 	git clone --recurse-submodules https://github.com/jhale-hwl/models.git
-	git clone --recurse-submodules https://github.com/tensorflow/tensorflow.git
 }
 
 function CreateCondaEnv {	
@@ -74,6 +73,11 @@ function CreateCondaEnv {
 function InstallTensorflow {
 	echo 'install tensorflow via pip'
 	pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
+}
+
+function AddEc2EnvVar {
+	echo 'export RUNNING_ON_EC2=True' >> ~/.bash_profile
+	. ~/.bash_profile
 }
 
 case "$1" in
@@ -116,6 +120,7 @@ case "$1" in
 		;;
 	part2)
 		InstallTensorflow
+		AddEc2EnvVar
 		;;
 	*)
 		echo 'Use ami-d05e75b8'

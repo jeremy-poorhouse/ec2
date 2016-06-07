@@ -18,7 +18,6 @@ function InstallCuda {
 	echo 'update bash_profile'
 	echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"' >> ~/.bash_profile
 	echo 'export CUDA_HOME=/usr/local/cuda' >> ~/.bash_profile
-	. ~/.bash_profile
 }
 
 function InstallCudnn {
@@ -46,7 +45,6 @@ function InstallAnaconda {
 	wget http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh
 	bash Anaconda2-4.0.0-Linux-x86_64.sh
 	rm Anaconda2-4.0.0-Linux-x86_64.sh
-	. ~/.bashrc
 }
 
 function SetupDataVolume {
@@ -65,7 +63,7 @@ function GitClone {
 
 function CreateCondaEnv {	
 	echo 'create conda env'
-	conda create -n tensorflow python=2.7	
+	~/anaconda2/bin/conda create -n tensorflow python=2.7	
 	echo 'Please enter "source activate tensorflow"'
 }
 
@@ -76,7 +74,6 @@ function InstallTensorflow {
 
 function AddEc2EnvVar {
 	echo 'export RUNNING_ON_EC2=True' >> ~/.bash_profile
-	. ~/.bash_profile
 }
 
 case "$1" in
@@ -120,6 +117,8 @@ case "$1" in
 	part2)
 		InstallTensorflow
 		AddEc2EnvVar
+		echo 'please run ". ~/.bash_profile"'
+		echo 'please run ". ~/.bashrc"'
 		;;
 	*)
 		echo 'Use ami-d05e75b8'

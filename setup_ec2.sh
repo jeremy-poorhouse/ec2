@@ -45,6 +45,7 @@ function InstallAnaconda {
 	wget http://repo.continuum.io/archive/Anaconda2-4.0.0-Linux-x86_64.sh
 	bash Anaconda2-4.0.0-Linux-x86_64.sh
 	rm Anaconda2-4.0.0-Linux-x86_64.sh
+	echo 'export PATH="/home/ubuntu/anaconda2/bin:$PATH"' >> ~/.bash_profile
 }
 
 function SetupDataVolume {
@@ -65,7 +66,7 @@ function GitClone {
 function CreateCondaEnv {	
 	echo 'create conda env'
 	~/anaconda2/bin/conda create -n tensorflow python=2.7	
-	echo 'please run ". ~/.bashrc"'
+	echo 'please run ". ~/.bash_profile"'
 	echo 'Please run "source activate tensorflow"'
 }
 
@@ -76,6 +77,7 @@ function InstallTensorflow {
 
 function AddEc2EnvVar {
 	echo 'export RUNNING_ON_EC2=True' >> ~/.bash_profile
+	echo 'please run ". ~/.bash_profile"'
 }
 
 case "$1" in
@@ -119,7 +121,6 @@ case "$1" in
 	part2)
 		InstallTensorflow
 		AddEc2EnvVar
-		echo 'please run ". ~/.bash_profile"'
 		;;
 	*)
 		echo 'Use ami-d05e75b8'
